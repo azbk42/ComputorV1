@@ -1,8 +1,6 @@
 import sys
 
 def find_degres(s: str) -> int:
-    if '.' in s:
-        raise AssertionError("Non whole number")
     degres = 0
     for i in range(len(s) -1):
         
