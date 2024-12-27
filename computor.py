@@ -1,21 +1,23 @@
 import sys
+import re
 
 def find_degres(s: str) -> int:
     degres = 0
-    for i in range(len(s) -1):
-        
-        j = i +1
-       
-        if s[i] == '^' and s[j]:
-            if int(s[j]) > degres:
-                degres = int(s[j])
-
+    res = re.findall(r'X\^\d+', s)
+    if 'X' in s:
+        degres = 1
+    if res:
+        result = [int(x[2:]) for x in res]
+        print(result)
+        degres = max(result)
+    print (degres)
     return degres
-
 
 
 def main():
     try:
+        if len(sys.argv) != 2:
+            raise AssertionError("Bad arg")
         s = sys.argv[1]
         
         degres = find_degres(s)
