@@ -1,5 +1,6 @@
 import sys
 import re
+from reduced import reduced_form
 
 def find_degres(s: str) -> int:
     degres = 0
@@ -8,19 +9,18 @@ def find_degres(s: str) -> int:
         degres = 1
     if res:
         result = [int(x[2:]) for x in res]
-        print(result)
         degres = max(result)
-    print (degres)
     return degres
-
 
 def main():
     try:
         if len(sys.argv) != 2:
             raise AssertionError("Bad arg")
-        s = sys.argv[1]
-        
+        s = sys.argv[1].upper()
         degres = find_degres(s)
+
+        reduced_form(s)
+
         print(f'Polynomial degree = {degres}')
         
         if degres > 2:
